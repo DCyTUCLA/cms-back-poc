@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "post_files",
+  "info": {
+    "singularName": "post-file",
+    "pluralName": "post-files",
+    "displayName": "post-file"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "single": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
