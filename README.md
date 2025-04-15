@@ -1,61 +1,119 @@
-# 🚀 Getting started with Strapi
+# UCLA Blog POC
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+A Proof of Concept (POC) demonstrating the integration of a headless CMS (Strapi) with Astro as the frontend renderer, creating an optimized and modern content management stack.
 
-### `develop`
+## Overview
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+This project explores the benefits of combining:
 
-```
-npm run develop
-# or
-yarn develop
-```
+- **Strapi** as a headless CMS for content management
+- **Astro** as a modern static site generator for frontend rendering
+- **MinIO** for object storage
+- **PostgreSQL** for database
 
-### `start`
+The goal is to showcase how this stack can provide:
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+- Better performance through static site generation
+- Flexible content management through a headless CMS
+- Modern development experience
+- Optimized content delivery
 
-```
-npm run start
-# or
-yarn start
-```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
+## Architecture
 
 ```
-npm run build
-# or
-yarn build
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│   Astro     │     │   Strapi    │     │   MinIO     │
+│  Frontend   │◄────┤   Headless  │◄────┤   Storage   │
+│             │     │     CMS     │     │             │
+└─────────────┘     └─────────────┘     └─────────────┘
+                           │
+                           ▼
+                    ┌─────────────┐
+                    │ PostgreSQL  │
+                    │  Database   │
+                    └─────────────┘
 ```
 
-## ⚙️ Deployment
+## Features
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+- **Content Management**: Strapi provides a flexible and user-friendly interface for content management
+- **Static Site Generation**: Astro generates static HTML for optimal performance
+- **Markdown Support**: Rich text content with markdown support
+- **Image Management**: MinIO integration for efficient image storage and delivery
+- **Responsive Design**: Modern, responsive UI built with Tailwind CSS
 
-```
-yarn strapi deploy
-```
+## Getting Started
 
-## 📚 Learn more
+### Prerequisites
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+- Node.js (v18 or higher)
+- Docker and Docker Compose
+- pnpm
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+### Installation
 
-## ✨ Community
+1. Clone the repository:
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+   ```bash
+   git clone https://github.com/yourusername/ucla-blog-poc.git
+   cd ucla-blog-poc
+   ```
 
----
+2. Install dependencies:
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+   ```bash
+   pnpm install
+   ```
+
+3. Set up environment variables:
+
+   - Copy `.env.example` to `.env` in both frontend and backend directories
+   - Update the variables as needed
+
+4. Start the development environment:
+   ```bash
+   pnpm dev
+   ```
+
+## Development
+
+- Frontend: `http://localhost:4321`
+- Strapi Admin: `http://localhost:1337/admin`
+- MinIO Console: `http://localhost:9001`
+
+## Why This Stack?
+
+This POC demonstrates several advantages of using Strapi with Astro:
+
+1. **Performance**: Astro's static site generation provides excellent performance and SEO benefits
+2. **Developer Experience**: Modern tooling and frameworks make development efficient
+3. **Content Management**: Strapi offers a powerful and flexible CMS without the overhead of traditional CMS platforms
+4. **Scalability**: The headless architecture allows for easy scaling and integration with other services
+5. **Cost-Effective**: Static hosting is typically more cost-effective than traditional CMS hosting
+
+## Future Improvements
+
+- [ ] Add authentication and user management
+- [ ] Implement content preview functionality
+- [ ] Add search functionality
+- [ ] Optimize image delivery with a CDN
+- [ ] Add analytics integration
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Project Structure
+
+- `frontend/`: Astro-based frontend application
+- `backend/`: Strapi-based backend application
+- `docker-compose.yml`: Docker configuration for PostgreSQL
+- `.env`: Environment variables
+
+## Setup Instructions
+
+1. Start the PostgreSQL database:
+
+   ```bash
+   docker-compose up -d
+   ```
